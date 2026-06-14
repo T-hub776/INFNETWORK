@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://android.com">
 
-    <!-- 1. Permissions explicitly mapped with full namespaces -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
-    <!-- 2. Main application block without the old forbidden package attribute -->
     <application
         android:allowBackup="true"
         android:label="INF WIFI"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:supportsRtl="true">
         
-        <!-- 3. Explicitly mapped Main Screen Launcher -->
         <activity
             android:name="com.inf.wifi.MainActivity"
             android:exported="true">
@@ -21,5 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
     </application>
 </manifest>
