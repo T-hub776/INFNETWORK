@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INF WIFI Controller</title>
+    <style>
+      body {
+        background-color: #0d0d13;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .app-card {
+        border: 2px solid #2d2d3d;
+        border-radius: 16px;
+        background-color: #13131a;
+        width: 100%;
+        max-width: 360px;
+        padding: 40px 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+      .gh2 {
+        color: #ffffff;
+        margin: 0 0 10px 0;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .subtitle {
+        color: #707080;
+        font-size: 14px;
+        margin-bottom: 40px;
+      }
+      button {
+        color: #000000;
+        background-color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        padding: 16px 40px;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        width: 80%;
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+      }
+      button:active {
+        transform: scale(0.96);
+        background-color: #e0e0e0;
+      }
+      button.active-state {
+        background-color: #ff3b30;
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="app-card">
+      <h2 class="gh2">INF WIFI</h2>
+      <div class="subtitle">Unlimited Hotspot Controller</div>
+      <button id="turn-on">Turn On</button>
+    </div>
+
+    <script>
+      const wifiBtn = document.getElementById('turn-on');
+      let isHotspotOn = false;
+
+      wifiBtn.addEventListener('click', function() {
+        isHotspotOn = !isHotspotOn;
+        if (isHotspotOn) {
+          wifiBtn.innerText = "Turn Off";
+          wifiBtn.classList.add('active-state');
+          if (window.AndroidInterface) {
+              window.AndroidInterface.openHotspotSettings();
+          }
+        } else {
+          wifiBtn.innerText = "Turn On";
+          wifiBtn.classList.remove('active-state');
+        }
+      });
+    </script>
+  </body>
+  </html>
+  
