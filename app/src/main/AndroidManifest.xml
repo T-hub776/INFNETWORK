@@ -1,22 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://android.com">
+<manifest xmlns:android="http://android.com"
+    package="com.example.infnetwork"> <!-- Replace with your actual package name -->
 
+    <!-- Lines 4 & 5: Permissions must have android:name -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:label="INF WIFI"
-        android:supportsRtl="true">
-        
-        <activity
-            android:name="com.inf.wifi.MainActivity"
+        android:label="INFNETWORK"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!-- Line 12: Your main activity needs an android:name -->
+        <activity 
+            android:name=".MainActivity" 
             android:exported="true">
+            
+            <!-- Line 15: The intent filter wraps your launch actions -->
             <intent-filter>
+                <!-- Line 16 & 17: Action and Category need android:name -->
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
     </application>
 </manifest>
