@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://android.com"
-    package="com.networker.infnetwork">
+<manifest xmlns:android="http://android.com">
 
-    <!-- Fixed permissions by adding android:name -->
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:label="INFNETWORK"
+        android:label="networker"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <!-- Fixed activity by adding android:name -->
+        <!-- Main App Entry Screen -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.networker.infnetwork.MainActivity"
             android:exported="true">
             
-            <!-- Fixed intent filter syntax -->
             <intent-filter>
-                <!-- Fixed action and category by adding android:name -->
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -27,3 +24,4 @@
 
     </application>
 </manifest>
+
