@@ -1,0 +1,40 @@
+name: Compile INF WIFI APK
+
+# Tells GitHub to start the build whenever code is pushed to the "main" branch
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # Allows you to manually click a button on GitHub to start the build
+
+jobs:
+  compile-android:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Downloads a copy of your code onto GitHub's cloud computer
+    - name: Checkout Source Code
+      uses: actions/checkout@v4
+
+    # 2. Installs Java 17 (needed to run the Android compiler)
+    - name: Install Java 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+        cache: 'gradle'
+
+    # 3. Gives GitHub permission to run the Android build command tool
+    - name: Grant Execute Permission to Gradle
+      run: chmod +x ./gradlew
+
+    # 4. Compiles your Kotlin and HTML UI code into a real APK file
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug
+
+    # 5. Uploads the generated APK file so you can download it to your phone
+    - name: Upload Finished APK Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: INF-WIFI-App
+        path: app/build/outputs/apk/debug/app-debug.apk
+        
